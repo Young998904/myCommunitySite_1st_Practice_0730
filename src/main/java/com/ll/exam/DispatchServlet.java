@@ -13,10 +13,8 @@ public class DispatchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=utf-8");
+        Rq rq = new Rq(req, resp);
 
-        resp.getWriter().append("작동합니다!");
+        rq.resp.getWriter().append("Rq 클래스 생성 성공");
     }
 }
