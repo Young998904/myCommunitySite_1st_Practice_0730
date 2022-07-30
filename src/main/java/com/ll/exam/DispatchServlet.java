@@ -15,6 +15,9 @@ public class DispatchServlet extends HttpServlet {
 
         Rq rq = new Rq(req, resp);
 
-        rq.resp.getWriter().append("Rq 클래스 생성 성공");
+        switch (rq.getActionPath()) {
+            case "/usr/article/list" :
+                rq.view("usr/article/list");
+        }
     }
 }

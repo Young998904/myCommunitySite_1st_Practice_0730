@@ -1,8 +1,11 @@
 package com.ll.exam;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class Rq {
@@ -20,5 +23,24 @@ public class Rq {
         }
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
+    }
+    public void view(String path) {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getActionPath() {
+        System.out.println(req.getRequestURI());
+        String[] bits = req.getRequestURI().split("/");
+        for (String bit : bits) {
+            System.out.println(bit);
+        }
+        return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
     }
 }
