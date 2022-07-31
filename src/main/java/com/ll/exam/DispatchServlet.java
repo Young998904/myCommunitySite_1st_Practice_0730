@@ -20,7 +20,9 @@ public class DispatchServlet extends HttpServlet {
 
         switch (rq.getActionPath()) {
             case "/usr/article/list" :
-                ArticleController.showLIst(rq);
+                articleController.showLIst(rq);
+            case "/usr/article/write" :
+                articleController.doWrite(rq);
         }
     }
 }
