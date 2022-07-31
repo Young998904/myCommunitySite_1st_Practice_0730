@@ -48,12 +48,23 @@ public class Rq {
         }
     }
 
-    public String getActionPath() {
-        String[] bits = req.getRequestURI().split("/");
+    public String getParam(String paramName, String defaultValue) {
+        String value = req.getParameter(paramName);
 
-        return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+        if (value == null || value.trim().length() == 0) {
+            return defaultValue;
+        }
+
+        return value;
     }
-    public String getMethod() {
-        return req.getMethod();
-    }
+
+        public String getActionPath() {
+            String[] bits = req.getRequestURI().split("/");
+
+            return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+        }
+
+        public String getMethod() {
+            return req.getMethod();
+        }
 }
