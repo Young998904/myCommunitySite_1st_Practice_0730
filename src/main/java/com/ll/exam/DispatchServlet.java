@@ -16,6 +16,8 @@ public class DispatchServlet extends HttpServlet {
 
         Rq rq = new Rq(req, resp);
 
+        ArticleController articleController = new ArticleController(rq);
+
         switch (rq.getActionPath()) {
             case "/usr/article/list" :
                 ArticleController.showLIst(rq);
