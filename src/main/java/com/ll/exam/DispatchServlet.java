@@ -1,5 +1,6 @@
 package com.ll.exam;
 
+import com.ll.exam.article.ArticleController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ public class DispatchServlet extends HttpServlet {
 
         switch (rq.getActionPath()) {
             case "/usr/article/list" :
-                rq.view("usr/article/list");
+                ArticleController.showLIst(rq);
         }
     }
 }
