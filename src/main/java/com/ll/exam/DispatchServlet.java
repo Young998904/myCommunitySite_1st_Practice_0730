@@ -18,11 +18,28 @@ public class DispatchServlet extends HttpServlet {
 
         ArticleController articleController = new ArticleController(rq);
 
-        switch (rq.getActionPath()) {
-            case "/usr/article/list" :
-                articleController.showLIst(rq);
-            case "/usr/article/write" :
-                articleController.doWrite(rq);
+        switch (rq.getMethod()) {
+            case "GET" :
+                switch (rq.getActionPath()) {
+                    case "/usr/article/list" :
+                        articleController.showLIst(rq);
+                        break;
+                    case "/usr/article/write" :
+                        articleController.showWrite(rq);
+                        break;
+                }
+            case "POST" :
+                switch (rq.getActionPath()) {
+                    case "/usr/article/write" :
+                        articleController.doWrite(rq);
+                        break;
+                }
+
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        doGet(req, resp);
     }
 }

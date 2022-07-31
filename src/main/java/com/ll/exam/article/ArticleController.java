@@ -20,7 +20,11 @@ public class ArticleController {
         rq.view("usr/article/list");
     }
 
-    public void doWrite(Rq rq) {
+    public void showWrite(Rq rq) {
         rq.view("usr/article/write");
+    }
+
+    public void doWrite(Rq rq) {
+        rq.appendBody("일단 성공");
     }
 }
