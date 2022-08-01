@@ -57,14 +57,23 @@ public class Rq {
 
         return value;
     }
+    public String getPathValueByIndex(int index, String defaultValue) {
+        String[] bits = req.getRequestURI().split("/");
 
-        public String getActionPath() {
-            String[] bits = req.getRequestURI().split("/");
-
-            return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+        try {
+            return bits[4 + index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return defaultValue;
         }
+    }
 
-        public String getMethod() {
-            return req.getMethod();
-        }
+    public String getActionPath() {
+        String[] bits = req.getRequestURI().split("/");
+
+        return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+    }
+
+    public String getMethod() {
+        return req.getMethod();
+    }
 }
