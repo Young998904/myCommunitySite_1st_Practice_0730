@@ -35,6 +35,10 @@ public class ArticleController {
     }
 
     public void showDetail(Rq rq) {
-        return;
+        long id = 1;
+        ArticleDto article = articleService.findById(id);
+
+        rq.setAttr("article", article);
+        rq.view("usr/article/detail");
     }
 }
