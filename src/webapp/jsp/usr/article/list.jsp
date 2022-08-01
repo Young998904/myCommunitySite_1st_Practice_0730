@@ -9,6 +9,9 @@
 
 <ul>
     <% for (ArticleDto articleDto : articleDtos) { %>
-    <li><%=articleDto.getId()%>. <%=articleDto.getTitle()%></li>
+    <li>
+        <a href="/usr/article/detail/free/<%=articleDto.getId()%>"><%=articleDto.getId()%></a>
+        <a href="/usr/article/detail/free/<%=articleDto.getId()%>"><%=articleDto.getTitle()%></a>
+    </li>
     <% } %>
 </ul>

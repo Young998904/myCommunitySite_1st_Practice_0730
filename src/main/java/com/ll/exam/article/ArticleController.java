@@ -33,4 +33,8 @@ public class ArticleController {
         String body = rq.getParam("body", "");
         articleService.add(title, body);
     }
+
+    public void showDetail(Rq rq) {
+        return;
+    }
 }
