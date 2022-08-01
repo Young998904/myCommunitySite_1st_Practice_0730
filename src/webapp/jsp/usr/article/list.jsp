@@ -12,6 +12,7 @@
     <li>
         <a href="/usr/article/detail/free/<%=articleDto.getId()%>"><%=articleDto.getId()%></a>
         <a href="/usr/article/detail/free/<%=articleDto.getId()%>"><%=articleDto.getTitle()%></a>
+        <a onclick="" href="/usr/article/delete/free/<%=articleDto.getId()%>">삭제</a>
     </li>
     <% } %>
 </ul>
