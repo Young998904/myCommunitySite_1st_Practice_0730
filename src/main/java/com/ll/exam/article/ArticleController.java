@@ -69,6 +69,7 @@ public class ArticleController {
         }
 
         articleService.delete(id);
-        rq.appendBody("삭제완료");
+        rq.appendBody("<div>삭제완료<div>");
+        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
 }
