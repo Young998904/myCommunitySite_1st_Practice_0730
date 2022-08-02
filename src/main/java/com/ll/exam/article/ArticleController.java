@@ -72,4 +72,23 @@ public class ArticleController {
         rq.appendBody("<div>삭제완료<div>");
         rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
+
+    public void showModify(Rq rq) {
+        long id = Long.parseLong(rq.getPathValueByIndex(1, "0"));
+
+        ArticleDto article = articleService.findById(id);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요");
+            return;
+        }
+
+        if (article == null) {
+            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            return;
+        }
+
+        rq.setAttr("article", article);
+        rq.view("/usr/article/modify");
+    }
 }
