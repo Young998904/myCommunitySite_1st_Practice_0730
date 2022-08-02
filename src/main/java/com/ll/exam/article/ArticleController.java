@@ -69,7 +69,7 @@ public class ArticleController {
         }
 
         articleService.delete(id);
-        rq.appendBody("<div>삭제완료<div>");
+        rq.appendBody("<div>삭제가 완료되었습니다.<div>");
         rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
 
@@ -90,5 +90,29 @@ public class ArticleController {
 
         rq.setAttr("article", article);
         rq.view("/usr/article/modify");
+    }
+
+    public void doModify(Rq rq) {
+        long id = Long.parseLong(rq.getPathValueByIndex(1, "0"));
+
+        ArticleDto article = articleService.findById(id);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요");
+            return;
+        }
+
+        if (article == null) {
+            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            return;
+        }
+
+        String title = rq.getParam("title", "");
+        String body = rq.getParam("body", "");
+
+        articleService.modify(id, title, body);
+
+        rq.appendBody("<div>수정이 완료되었습니다</div>");
+        rq.appendBody("<div><a href=\"/usr/article/list/free\">게시물 리스트로 이동</a></div>");
     }
 }

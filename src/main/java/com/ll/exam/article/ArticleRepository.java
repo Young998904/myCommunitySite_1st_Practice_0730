@@ -46,4 +46,10 @@ public class ArticleRepository {
         }
         return null;
     }
+
+    public void modify(long id, String title, String body) {
+        ArticleDto article = findById(id);
+        article.setTitle(title);
+        article.setBody(body);
+    }
 }
