@@ -2,8 +2,7 @@ package com.ll.exam.article.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 
