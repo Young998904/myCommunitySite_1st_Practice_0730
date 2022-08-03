@@ -1,9 +1,5 @@
-<%@ page import="com.ll.exam.article.dto.ArticleDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%
-    ArticleDto article = (ArticleDto) request.getAttribute("article");
-%>
 
 <%@ include file="../common/head.jspf" %>
 
@@ -30,10 +26,16 @@
         <h1 class="font-bold text-lg">게시물 수정</h1>
 
         <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
+            <div class = "flex">
+                <span class = "w-[40px]">번호</span>
+                <div>
+                    ${article.id}
+                </div>
+            </div>
             <div>
                 <span>제목</span>
                 <div>
-                    기존 제목 : <%=article.getTitle()%>
+                    기존 제목 : ${article.title}
                 </div>
                 <div>
                     <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요."/>
@@ -43,7 +45,7 @@
             <div>
                 <span>내용</span>
                 <div>
-                    기존 내용 : <%=article.getBody()%>
+                    기존 내용 : ${article.body}
                 </div>
                 <div>
                     <input name="body" type="text" maxlength="300" placeholder="내용을 입력해주세요."/>
