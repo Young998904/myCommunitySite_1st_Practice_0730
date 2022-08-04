@@ -28,7 +28,7 @@ public class ArticleController {
     }
 
     public void doWrite(Rq rq) {
-        rq.appendBody("일단 성공");
+        rq.println("일단 성공");
         String title = rq.getParam("title", "");
         String body = rq.getParam("body", "");
         articleService.add(title, body);
@@ -40,12 +40,12 @@ public class ArticleController {
         ArticleDto article = articleService.findById(id);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요");
+            rq.println("번호를 입력해주세요");
             return;
         }
 
         if (article == null) {
-            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            rq.println("해당 게시글이 존재하지 않습니다.");
             return;
         }
 
@@ -59,18 +59,18 @@ public class ArticleController {
         ArticleDto article = articleService.findById(id);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요");
+            rq.println("번호를 입력해주세요");
             return;
         }
 
         if (article == null) {
-            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            rq.println("해당 게시글이 존재하지 않습니다.");
             return;
         }
 
         articleService.delete(id);
-        rq.appendBody("<div>삭제가 완료되었습니다.<div>");
-        rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
+        rq.println("<div>삭제가 완료되었습니다.<div>");
+        rq.println("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>");
     }
 
     public void showModify(Rq rq) {
@@ -79,12 +79,12 @@ public class ArticleController {
         ArticleDto article = articleService.findById(id);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요");
+            rq.println("번호를 입력해주세요");
             return;
         }
 
         if (article == null) {
-            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            rq.println("해당 게시글이 존재하지 않습니다.");
             return;
         }
 
@@ -98,12 +98,12 @@ public class ArticleController {
         ArticleDto article = articleService.findById(id);
 
         if (id == 0) {
-            rq.appendBody("번호를 입력해주세요");
+            rq.println("번호를 입력해주세요");
             return;
         }
 
         if (article == null) {
-            rq.appendBody("해당 게시글이 존재하지 않습니다.");
+            rq.println("해당 게시글이 존재하지 않습니다.");
             return;
         }
 
@@ -112,7 +112,7 @@ public class ArticleController {
 
         articleService.modify(id, title, body);
 
-        rq.appendBody("<div>수정이 완료되었습니다</div>");
-        rq.appendBody("<div><a href=\"/usr/article/list/free\">게시물 리스트로 이동</a></div>");
+        rq.println("<div>수정이 완료되었습니다</div>");
+        rq.println("<div><a href=\"/usr/article/list/free\">게시물 리스트로 이동</a></div>");
     }
 }
